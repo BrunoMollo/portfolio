@@ -1,16 +1,14 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Bruno Mollo">
+  <div>
+    <img
+      class="rounded-full"
+      src="https://media.licdn.com/dms/image/C4D03AQFYUYOGameJEw/profile-displayphoto-shrink_200_200/0/1659026067610?e=1727308800&v=beta&t=sajS_9bJJ8t6Hbzg3whdwLQopy_fJGZfh-PSicYXorE"
+      alt="Bruno Mollo profile"
+    />
+    <h1 class="text-6xl">Bruno Mollo</h1>
+  </div>
+</Layout>
