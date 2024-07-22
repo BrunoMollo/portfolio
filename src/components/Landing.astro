@@ -1,15 +1,12 @@
+---
+import { Image } from "astro:assets";
+import profile_image from "../assets/profile.jpeg";
+---
+
 <div class="flex flex-col items-center justify-center gap-8 md:flex-row">
-  <img
-    class="rounded-full"
-    src="https://media.licdn.com/dms/image/C4D03AQFYUYOGameJEw/profile-displayphoto-shrink_200_200/0/1659026067610?e=1727308800&v=beta&t=sajS_9bJJ8t6Hbzg3whdwLQopy_fJGZfh-PSicYXorE"
-    alt="Bruno Mollo's Profile"
-  />
+  <Image src={profile_image} alt="Bruno Mollos picture" width={170} height={170} class={"rounded-full"} />
   <div class="flex flex-col">
-    <h1 class="w-90 font- inline-block text-center text-6xl font-bold">
-      Bruno Mollo
-    </h1>
-    <span class="px-8 text-center font-light text-gray-200">
-      Advanced Systems Engineering Student
-    </span>
+    <h1 class="w-90 font- inline-block text-center text-6xl font-bold">Bruno Mollo</h1>
+    <span class="px-8 text-center font-light text-gray-200"> Advanced Systems Engineering Student </span>
   </div>
 </div>
