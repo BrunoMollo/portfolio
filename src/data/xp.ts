@@ -1,4 +1,5 @@
 export type Job = {
+  slug: string;
   company: string;
   roles: {
     name: string;
@@ -7,9 +8,12 @@ export type Job = {
   }[];
 };
 
+// Remember that the month index starts with zero
+
 export const jobs = [
   {
     company: "Iboux",
+    slug: "iboux",
     roles: [
       {
         name: "System Team Leader",
@@ -17,7 +21,7 @@ export const jobs = [
       },
       {
         name: "System Integrations Specialist",
-        start: new Date(2024, 2, 1),
+        start: new Date(2024, 1, 1),
         end: new Date(2024, 6, 1),
       },
     ],
@@ -25,21 +29,23 @@ export const jobs = [
 
   {
     company: "Bocantino",
+    slug: "bocantino",
     roles: [
       {
         name: "Independent Web Developer",
-        start: new Date(2023, 12, 1),
+        start: new Date(2023, 11, 1),
       },
     ],
   },
 
   {
     company: "Tribal Consulting",
+    slug: "tribal",
     roles: [
       {
         name: "FullStack Programer",
-        start: new Date(2023, 2, 1),
-        end: new Date(2023, 9, 1),
+        start: new Date(2023, 1, 1),
+        end: new Date(2023, 8, 1),
       },
     ],
   },

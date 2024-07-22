@@ -5,16 +5,49 @@ interface Props {
   job: Job;
 }
 
-const { company, roles } =
-  Astro.props.job;
+const { company, roles, slug } = Astro.props.job;
 
+function get_month_abbreviation(monthIndex: number): string {
+  switch (monthIndex) {
+    case 0:
+      return "Jan";
+    case 1:
+      return "Feb";
+    case 2:
+      return "Mar";
+    case 3:
+      return "Apr";
+    case 4:
+      return "May";
+    case 5:
+      return "Jun";
+    case 6:
+      return "Jul";
+    case 7:
+      return "Aug";
+    case 8:
+      return "Sep";
+    case 9:
+      return "Oct";
+    case 10:
+      return "Nov";
+    case 11:
+      return "Dec";
+    default:
+      throw new Error("Invalid month index. Please provide a number between 0 and 11.");
+  }
+}
 function format_date(d?: Date) {
   if (!d) {
     return "Present";
   }
   const month = d.getMonth();
+  switch (month) {
+    case 0:
+      return "Jan";
+  }
   const year = d.getFullYear();
-  return `${month}-${year}`;
+  return `${get_month_abbreviation(month)}. ${year}`;
 }
 
 function std_date(d?: Date) {
@@ -25,57 +58,36 @@ function std_date(d?: Date) {
 }
 ---
 
-<article
-  class="w-full transform rounded border-black bg-slate-400 p-4 shadow-md"
->
-  <h3 class="text-3xl text-gray-700">
-    {company}
-  </h3>
-  <div class="text-gray-600">
-    <h4 class="font-bold">
+<article class="w-full transform rounded border-black bg-slate-400 p-4 shadow-md">
+  <a href={`/xp/${slug}`}>
+    <h3 class="text-3xl text-gray-700">
+      {company}
+    </h3>
+    <div class="text-gray-600">
+      <h4 class="font-bold">
+        {roles.length > 1 ? "Roles" : "Role"}
+      </h4>
       {
-        roles.length > 1
-          ? "Roles"
-          : "Role"
-      }
-    </h4>
-    {
-      roles.map(
-        ({ name, start, end }) => (
+        roles.map(({ name, start, end }) => (
           <ul>
             <li class="flex flex-col pb-4 md:flex-row">
               <span>{name}</span>
               <span class="text-gray-500">
                 ( from
-                <time
-                  datetime={std_date(
-                    start,
-                  )}
-                >
-                  {format_date(start)}
-                </time>
+                <time datetime={std_date(start)}>{format_date(start)}</time>
                 to
-                <time
-                  datetime={std_date(
-                    end,
-                  )}
-                >
-                  {format_date(end)}
-                </time>
-                )
+                <time datetime={std_date(end)}>{format_date(end)}</time>)
               </span>
             </li>
           </ul>
-        ),
-      )
-    }
-  </div>
+        ))
+      }
+    </div>
+  </a>
 </article>
-
 <style>
   article {
-    transition: transform 300ms
-      ease-in-out;
+    transition: transform 300ms ease-in-out;
   }
   article:hover {
     transform: scale(1.01);
