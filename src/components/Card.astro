@@ -1,0 +1,36 @@
+---
+interface Props {
+  company: string;
+  roles: {
+    name: string;
+    start: Date;
+    end: Date | null;
+  }[];
+}
+
+const { company, roles } = Astro.props;
+function format_date(d: Date | null) {
+  if (!d) {
+    return "Present";
+  }
+  const month = d.getMonth();
+  const year = d.getFullYear();
+  return `${month}-${year}`;
+}
+---
+
+<article class="w-full rounded bg-slate-400 p-4">
+  <h3 class="text-3xl text-gray-700">{company}</h3>
+  <div class="text-gray-600">
+    <h4 class="font-bold">{roles.length > 1 ? "Roles" : "Role"}</h4>
+    {
+      roles.map(({ name, start, end }) => (
+        <ul>
+          <li>
+            {name} (from {format_date(start)} to {format_date(end)})
+          </li>
+        </ul>
+      ))
+    }
+  </div>
+</article>

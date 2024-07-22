@@ -1,8 +1,32 @@
 ---
+import Card from "../components/Card.astro";
 import Landing from "../components/Landing.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Bruno Mollo">
   <Landing />
+  <div class="md:px-42 flex flex-col items-center gap-4 px-6 sm:px-20">
+    <Card
+      company="Iboux"
+      roles={[
+        { name: "Systems Team Leader", start: new Date(2024, 6, 1), end: null },
+        {
+          name: "Systems Integration Specialist",
+          start: new Date(2024, 6, 1),
+          end: null,
+        },
+      ]}
+    />
+    <Card
+      company="Tribal Consulting"
+      roles={[
+        {
+          name: "FullStack Developer",
+          start: new Date(2023, 2, 1),
+          end: new Date(2023, 7, 1),
+        },
+      ]}
+    />
+  </div>
 </Layout>
