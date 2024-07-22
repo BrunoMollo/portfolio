@@ -1,16 +1,14 @@
 ---
+import type { Job } from "../data/xp";
+
 interface Props {
-  company: string;
-  roles: {
-    name: string;
-    start: Date;
-    end: Date | null;
-  }[];
+  job: Job;
 }
 
-const { company, roles } = Astro.props;
+const { company, roles } =
+  Astro.props.job;
 
-function format_date(d: Date | null) {
+function format_date(d?: Date) {
   if (!d) {
     return "Present";
   }
@@ -19,7 +17,7 @@ function format_date(d: Date | null) {
   return `${month}-${year}`;
 }
 
-function std_date(d: Date | null) {
+function std_date(d?: Date) {
   const date = d ? d : new Date();
   const month = date.getMonth();
   const year = date.getFullYear();
@@ -30,30 +28,54 @@ function std_date(d: Date | null) {
 <article
   class="w-full transform rounded border-black bg-slate-400 p-4 shadow-md"
 >
-  <h3 class="text-3xl text-gray-700">{company}</h3>
+  <h3 class="text-3xl text-gray-700">
+    {company}
+  </h3>
   <div class="text-gray-600">
-    <h4 class="font-bold">{roles.length > 1 ? "Roles" : "Role"}</h4>
+    <h4 class="font-bold">
+      {
+        roles.length > 1
+          ? "Roles"
+          : "Role"
+      }
+    </h4>
     {
-      roles.map(({ name, start, end }) => (
-        <ul>
-          <li class="flex flex-col pb-4 md:flex-row">
-            <span>{name}</span>
-            <span class="text-gray-500">
-              ( from
-              <time datetime={std_date(start)}>{format_date(start)}</time>
-              to
-              <time datetime={std_date(end)}>{format_date(end)}</time>)
-            </span>
-          </li>
-        </ul>
-      ))
+      roles.map(
+        ({ name, start, end }) => (
+          <ul>
+            <li class="flex flex-col pb-4 md:flex-row">
+              <span>{name}</span>
+              <span class="text-gray-500">
+                ( from
+                <time
+                  datetime={std_date(
+                    start,
+                  )}
+                >
+                  {format_date(start)}
+                </time>
+                to
+                <time
+                  datetime={std_date(
+                    end,
+                  )}
+                >
+                  {format_date(end)}
+                </time>
+                )
+              </span>
+            </li>
+          </ul>
+        ),
+      )
     }
   </div>
 </article>
 
 <style>
   article {
-    transition: transform 300ms ease-in-out;
+    transition: transform 300ms
+      ease-in-out;
   }
   article:hover {
     transform: scale(1.01);

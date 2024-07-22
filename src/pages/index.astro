@@ -3,6 +3,7 @@ import Card from "../components/Card.astro";
 import Landing from "../components/Landing.astro";
 import Layout from "../layouts/Layout.astro";
 import ShovelIcon from "../icons/ShovelIcon.astro";
+import { jobs } from "../data/xp";
 ---
 
 <Layout title="Bruno Mollo">
@@ -23,30 +24,10 @@ import ShovelIcon from "../icons/ShovelIcon.astro";
         <ShovelIcon />
       </figure>
     </div>
-    <Card
-      company="Iboux"
-      roles={[
-        {
-          name: "Systems Team Leader",
-          start: new Date(2024, 6, 1),
-          end: null,
-        },
-        {
-          name: "Systems Integration Specialist",
-          start: new Date(2024, 6, 1),
-          end: null,
-        },
-      ]}
-    />
-    <Card
-      company="Tribal Consulting"
-      roles={[
-        {
-          name: "FullStack Developer",
-          start: new Date(2023, 2, 1),
-          end: new Date(2023, 7, 1),
-        },
-      ]}
-    />
+    {
+      jobs.map((job) => (
+        <Card job={job} />
+      ))
+    }
   </div>
 </Layout>
