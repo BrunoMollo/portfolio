@@ -2,15 +2,35 @@
 import Card from "../components/Card.astro";
 import Landing from "../components/Landing.astro";
 import Layout from "../layouts/Layout.astro";
+import ShovelIcon from "../icons/ShovelIcon.astro";
 ---
 
 <Layout title="Bruno Mollo">
-  <Landing />
-  <div class="md:px-42 flex flex-col items-center gap-4 px-6 sm:px-20">
+  <header class="pt-10">
+    <Landing />
+  </header>
+  <hr class="invisible h-10" />
+  <div
+    class="md:px-42 flex max-w-6xl flex-col items-center gap-4 px-6 sm:px-20"
+  >
+    <div class="flex w-full">
+      <h2
+        class="text-5xl font-bold underline"
+      >
+        Experience
+      </h2>
+      <figure class="pl-2">
+        <ShovelIcon />
+      </figure>
+    </div>
     <Card
       company="Iboux"
       roles={[
-        { name: "Systems Team Leader", start: new Date(2024, 6, 1), end: null },
+        {
+          name: "Systems Team Leader",
+          start: new Date(2024, 6, 1),
+          end: null,
+        },
         {
           name: "Systems Integration Specialist",
           start: new Date(2024, 6, 1),
