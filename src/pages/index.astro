@@ -4,30 +4,38 @@ import Landing from "../components/Landing.astro";
 import Layout from "../layouts/Layout.astro";
 import ShovelIcon from "../icons/ShovelIcon.astro";
 import { jobs } from "../data/xp";
+import Diploma from "../components/Diploma.astro";
+import BookIcon from "../icons/BookIcon.astro";
 ---
 
 <Layout title="Bruno Mollo">
   <header class="pt-10">
     <Landing />
   </header>
+
   <hr class="invisible h-10" />
-  <div
-    class="md:px-42 flex max-w-6xl flex-col items-center gap-4 px-6 sm:px-20"
-  >
+
+  <section class="md:px-42 flex max-w-6xl flex-col items-center gap-4 px-6 sm:px-20">
     <div class="flex w-full">
-      <h2
-        class="text-5xl font-bold underline"
-      >
-        Experience
-      </h2>
+      <h2 id="experience" class="text-5xl font-bold underline">Experience</h2>
       <figure class="pl-2">
         <ShovelIcon />
       </figure>
     </div>
-    {
-      jobs.map((job) => (
-        <Card job={job} />
-      ))
-    }
-  </div>
+    {jobs.map((job) => <Card job={job} />)}
+  </section>
+
+  <hr class="invisible h-10" />
+
+  <section class="md:px-42 flex max-w-6xl flex-col items-center gap-4 px-6 sm:px-20">
+    <div class="flex w-full">
+      <h2 id="education" class="text-5xl font-bold underline">Education</h2>
+      <figure class="pl-2">
+        <BookIcon />
+      </figure>
+    </div>
+    <Diploma />
+  </section>
+
+  <hr class="invisible h-10" />
 </Layout>

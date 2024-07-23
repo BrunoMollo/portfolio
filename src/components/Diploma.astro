@@ -1,0 +1,49 @@
+---
+import BadgeIcon from "../icons/BadgeIcon.astro";
+import StudentIcon from "../icons/StudentIcon.astro";
+---
+
+<div class="diploma-container relative mx-0 bg-slate-200 px-4 text-black subpixel-antialiased">
+  <BadgeIcon />
+  <div class="diploma-header">Collage Degree</div>
+  <div class="diploma-subheader">Universidad Tecnologica Nacional - Rosario</div>
+  <div class="diploma-subheader"><strong>Bruno Mollo</strong></div>
+  <div class="diploma-subheader">has almost successfully graduated as</div>
+  <div class="diploma-subheader"><strong>Systems Engineer</strong> <StudentIcon /></div>
+  <div class="diploma-footer">
+    <div>Date: (still waiting)</div>
+    <div>GPA: 8.5/10</div>
+  </div>
+  <div id="vertical line 1" class="absolute left-2 top-0 h-full w-1 bg-yellow-500"></div>
+  <div id="vertical line 2" class="absolute left-4 top-0 h-full w-1 bg-yellow-500"></div>
+</div>
+
+<style>
+  .diploma-container {
+    border: 2px solid #000;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .diploma-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .diploma-subheader {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .diploma-footer {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .diploma-container {
+      /* transform: rotateY(65deg); /* Reset rotation on hover */
+      rotate: 0.1 0.7 0 45deg;
+    }
+  }
+</style>
