@@ -6,16 +6,20 @@ import ShovelIcon from "../icons/ShovelIcon.astro";
 import { jobs } from "../data/xp";
 import Diploma from "../components/Diploma.astro";
 import BookIcon from "../icons/BookIcon.astro";
+import { fade } from "astro:transitions";
 ---
 
 <Layout title="Bruno Mollo">
-  <header class="pt-10">
+  <header transition:animate={fade({ duration: "120ms" })} class="pt-10">
     <Landing />
   </header>
 
   <hr class="invisible h-10" />
 
-  <section class="md:px-42 flex max-w-6xl flex-col items-center gap-4 px-6 sm:px-20">
+  <section
+    transition:animate={fade({ duration: "300ms" })}
+    class="md:px-42 flex max-w-6xl flex-col items-center gap-4 px-6 sm:px-20"
+  >
     <div class="flex w-full">
       <h2 id="experience" class="text-5xl font-bold underline">Experience</h2>
       <figure class="pl-2">
@@ -27,7 +31,10 @@ import BookIcon from "../icons/BookIcon.astro";
 
   <hr class="invisible h-10" />
 
-  <section class="md:px-42 flex max-w-6xl flex-col items-center gap-4 px-6 sm:px-20">
+  <section
+    transition:animate={fade({ duration: "500ms" })}
+    class="md:px-42 flex max-w-6xl flex-col items-center gap-4 px-6 sm:px-20"
+  >
     <div class="flex w-full">
       <h2 id="education" class="text-5xl font-bold underline">Education</h2>
       <figure class="pl-2">
