@@ -1,0 +1,20 @@
+/* This style are separated because they are suposed to be also aplied to the Markdown files */
+
+section {
+  /*tailwind -> text-lg */
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+}
+p {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}

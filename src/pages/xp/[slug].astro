@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+import "./job-style.css";
+import ExitIcon from "../../icons/ExitIcon.astro";
+
+export const getStaticPaths = (() => {
+  const slugs = ["iboux", "tribal"];
+
+  return slugs.map((slug) => ({ params: { slug } }));
+}) satisfies GetStaticPaths;
+
+const { params } = Astro;
+
+const jobs = await getCollection("jobs");
+const job = jobs.find((x) => x.slug === params.slug)!;
+const { Content } = await job.render();
+const aaa = await job.render();
+aaa;
+---
+
+<Layout title={`XP at ${job.data.company}`}>
+  <main class="container relative pl-8 pt-12">
+    <a class="right-4 text-xl text-slate-300 hover:text-slate-100 sm:absolute" href="..">
+      <span> Home </span>
+      <ExitIcon />
+    </a>
+    <h1 class="text-5xl underline underline-offset-8">Experience at <strong>{job.data.company}</strong></h1>
+    <section class="max-w-[850px] pt-8">
+      <Content />
+    </section>
+  </main>
+</Layout>
