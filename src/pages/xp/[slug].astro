@@ -7,7 +7,7 @@ import "./job-style.css";
 import ExitIcon from "../../icons/ExitIcon.astro";
 
 export const getStaticPaths = (() => {
-  const slugs = ["iboux", "tribal"];
+  const slugs = ["iboux", "tribal", "bocantino"];
 
   return slugs.map((slug) => ({ params: { slug } }));
 }) satisfies GetStaticPaths;
